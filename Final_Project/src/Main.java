@@ -26,7 +26,8 @@ public class Main {
             String input;
             input = scanner.next();
 
-            if (input.equals("addN")) {
+            if (input.equals("addN")) { /*adds a rectangle neighbourhood with 4 coordinates,
+                                          so that some banks may be within it */
                 System.out.print("enter neighbourhood's name : ");
                 String name = scanner.next();
                 if (!legalName(name)) {
@@ -54,7 +55,7 @@ public class Main {
                 }
             }
             //////////////////////////////
-            else if (input.equals("findN")) {
+            else if (input.equals("findN")) { /*gets name of a neighbourhood and returns its coordinate */
                 System.out.print("enter neighbourhood's name : ");
                 String s = scanner.next();
                 if (!legalName(s)) {
@@ -66,7 +67,7 @@ public class Main {
                 }
             }
             //////////////////////////////
-            else if (input.equals("addB")) {
+            else if (input.equals("addB")) { /*adds a main bank by receiving its name and its coordinate */
                 System.out.print("enter the name: ");
                 String name = scanner.next();
                 if (!legalName(name)) {
@@ -100,7 +101,7 @@ public class Main {
                         continue;
                     }
                 }
-            } else if (input.equals("addBr")) {
+            } else if (input.equals("addBr")) { /*adds a branch by receiving its name and its coordinate and its main bank's name */
                 System.out.print("enter the name: ");
                 String name = scanner.next();
                 if (!legalName(name)) {
@@ -149,7 +150,7 @@ public class Main {
                         }
                     }
                 }
-            } else if (input.equals("delBr")) {
+            } else if (input.equals("delBr")) { /*deletes a branch by its coordinate(if its not a main bank */
                 System.out.print("enter the coordinate: ");
                 int[] coo = new int[2];
                 scanner.nextLine();
@@ -179,7 +180,7 @@ public class Main {
                     System.out.println("coordinate not found!");
                 }
                 System.out.println("branch deleted.");
-            } else if (input.equals("listBrs")) {
+            } else if (input.equals("listBrs")) { /*gets a bank's name and list its branches. */
                 System.out.print("enter the bank name: ");
                 String name = scanner.next();
                 if (!legalName(name)) {
@@ -201,7 +202,7 @@ public class Main {
                 } else {
                     System.out.println("bank not found!");
                 }
-            } else if (input.equals("listB")) {
+            } else if (input.equals("listB")) { /*receiving a neighbourhood's name and prints banks within it */
                 System.out.print("enter the neighbourhood's name: ");
                 String s = scanner.next();
                 if (!legalName(s)) {
@@ -221,7 +222,7 @@ public class Main {
                     System.out.println("neighbourhood not found!");
 
                 }
-            } else if (input.equals("nearB")) {
+            } else if (input.equals("nearB")) { /*receives a coordinate and prints closest bank to it */
                 System.out.println("enter a coordinate: ");
                 int[] coo = new int[2];
                 scanner.nextLine();
@@ -242,8 +243,7 @@ public class Main {
             } else if (input.equals("print")) {
                 kdTree.print(root);
                 /////////////////////////////////////////////////
-            } else if (input.equals("availB" +
-                    "")) {
+            } else if (input.equals("availB")) { /*receives a coordinate and a radius and prints banks within a circle. */
                 System.out.print("enter a coordinate: ");
                 int[] coo = new int[2];
                 scanner.nextLine();
@@ -257,7 +257,7 @@ public class Main {
                 System.out.print("enter a radius: ");
                 double r = scanner.nextDouble();
                 kdTree.findInCircle(root, coo, r, 0);
-            } else if (input.equals("nearBr")) {
+            } else if (input.equals("nearBr")) { /*receives a coordinate and a bank name and prints closest branch of the bank to that coordinate */
                 System.out.print("enter a coordinate: ");
                 int[] coo = new int[2];
                 scanner.nextLine();
@@ -289,7 +289,7 @@ public class Main {
                     }
                 }
                 /////////////////////////////////////////////////
-            } else if (input.equals("add")) {
+            } else if (input.equals("add")) { /* this tree functions work with a BST tree using a name and numeric value */
                 String s = scanner.next();
                 if (!legalName(s)) {
                     System.out.println("illegal input!");
@@ -320,7 +320,7 @@ public class Main {
                 System.out.println(bst.search(bstNode, f));
                 bst.inOrder(bstNode);
                 //////////////////////////////////////////////////
-            }else if (input.equals("mostBrs")) {
+            }else if (input.equals("mostBrs")) { /*prints a bank with biggest number of branches. */
                 if (bstNode == null) {
                     System.out.println("no bank found!");
                 }else {
@@ -331,7 +331,7 @@ public class Main {
         }
     }
 
-    static boolean legalName(String s) {
+    static boolean legalName(String s) { //check if a string name is legal.
         char c;
         for (int i = 0; i < s.length(); i++) {
             c = s.charAt(i);
@@ -341,7 +341,7 @@ public class Main {
         }
         return true;
     }
-    static boolean legalCoo(String[] s) {
+    static boolean legalCoo(String[] s) { // checks if a coordinate is legal.
         if (!(s[0].charAt(0) >= '0' && s[0].charAt(0) <= '9')) {
             return false;
         }
